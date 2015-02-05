@@ -1,21 +1,23 @@
 properties {
-  $testMessage = 'Executed Test!'
-  $compileMessage = 'Executed Compile!'
-  $cleanMessage = 'Executed Clean!'
+  $deviceId = $env:SparkDeviceId
+  $token = $env:SparkToken
 }
 
-task default -depends Test
+task default -depends Deploy
 
-task Test -depends Compile, Clean { 
-  $testMessage
-}
 
 task Compile -depends Clean { 
-  $compileMessage
 }
 
 task Clean { 
   $cleanMessage
+}
+
+task Deploy { 
+    $url = "https://api.spark.io/v1/devices/" + $deviceId + "?access_token=" + $token
+    exec {
+      .\lib\curl\curl -X PUT -F file=@src\helloworld.ino "$url" -k
+    }
 }
 
 task ? -Description "Helper to display task info" {
