@@ -2,7 +2,7 @@ properties {
   $deviceId = $env:SparkDeviceId
   $token = $env:SparkToken
   $base_dir = resolve-path .
-  $curl = "$base_dir\lib\curl.exe"
+  $curl = "$base_dir\lib\curl\curl.exe"
 }
 
 task default -depends Deploy
