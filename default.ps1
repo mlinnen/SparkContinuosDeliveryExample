@@ -10,7 +10,8 @@ task Clean {
 
 task Deploy { 
     $url = "https://api.spark.io/v1/devices/" + $deviceId + "?access_token=" + $token
-    remove-item alias:curl
+    If (Test-Path Alias:curl) {Remove-Item Alias:curl}
+    If (Test-Path Alias:curl) {Remove-Item Alias:curl}
     exec {
         curl -X PUT -F file=@src\helloworld.ino "$url" -k
       }
