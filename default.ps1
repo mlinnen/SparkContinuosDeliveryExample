@@ -12,9 +12,8 @@ task Clean {
 
 task Deploy { 
     $url = "https://api.spark.io/v1/devices/" + $deviceId + "?access_token=" + $token
-    $curl
     exec {
-        .$curl -X PUT -F file=@src\helloworld.ino "https://api.spark.io/v1/devices/" -k
+        .$curl -X PUT -F file=@src\helloworld.ino "$url" -k
       }
 } -depends Clean
 
