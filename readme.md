@@ -16,4 +16,21 @@ This is the build script that takes a few parameters that Team City provides.  T
 - If you edit the readme and check in the changes then your spark core gets updated even though no real source got changed
 
 ##Team City Setup##
-TODO 
+I assume here that you have used Team City before or at least you can find what you need in their documents.  I have this sample hooked up to GitHub of course but you can use many other source control options with Team City.
+
+
+1. Create a build
+2. Setup the source control
+3. Add a Build Step that is a Powershell Script
+4. Test the build by manually triggering it
+5. Change the trigger on the build to be on checkin
+
+
+##Enhancements##
+- Get this working on a free hosted build platform
+- Use a Raspberry PI as the build server
+- Remove the dependency of curl.exe and do the REST api call using powershell
+- Make sure a broken build compile shows up as failed
+- Add in multi-file support
+- Don't trigger a build if you change the read me
+- If the Spark.io service is down fail the build
